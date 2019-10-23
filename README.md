@@ -25,10 +25,17 @@
 ## groupsテーブル
 |Column|Type|Option|
 |------|----|------|
-|groupname|string|null: false, add_index|
-|message_id|integer|null: false, foreign_key: true|
-|user_id|integer|null: false, foreign_key: true|
+|name|string|null: false, add_index|
 ### Association
 - has_many :message
 - has_many :groups_users
 - has_many :users, through :groups_users
+
+## groups_users
+|Column|Type|Option|
+|------|----|------|
+|user_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :user
+- belongb_to :group

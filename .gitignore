@@ -2,6 +2,6 @@
 /log/*
 /tmp/*
 !/log/.keep
-!/ltmp/.keeo
+!/tmp/.keep
 public/uploads/*
 tmp/pids/server.pid

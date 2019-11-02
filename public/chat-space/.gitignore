@@ -1,1 +1,6 @@
+/.bundle
+/log/*
+/tmp/*
+!/log/.keep
+!/ltmp/.keeo
 public/uploads/*

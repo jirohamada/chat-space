@@ -4,3 +4,4 @@
 !/log/.keep
 !/ltmp/.keeo
 public/uploads/*
+tmp/pids/server.pid

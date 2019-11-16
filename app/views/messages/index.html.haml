@@ -1,51 +1,14 @@
 .header
-  .header__top
-    グループを作成しました
+  -# .header__top
+  -#   = render 'shared/headertop'
   .header__side
-    %name
-      test-user
-    %icon
-      = fa_icon "edit"
-      = fa_icon "cog"
+    = render 'shared/headerside'
   .header__message
-    .header__message--group
-      .group
-        test-group
-      .member
-        membername
-    .edit-btn
-      Edit
+    = render 'shared/headermessage'
 .contents 
   .contents__side
-    .group1
-      .name
-        test-group 
-      .message
-        さようなら
-    .group2
-      .name
-        sample-group 
-      .message
-        hello! 
-    .group3 
-      .name
-        example 
-      .message
-        まだメッセージがありません
+    = render 'shared/contentside'
   .contents__message
-    .user1
-      .user
-        %name
-          test-user
-        %date
-          2019/11/11(Wed) 17:50:55
-        .message
-          こんにちは！
+    = render 'shared/contentmessage'
   .form
-    .input-box
-      .input-box__text
-      .input-box__icon
-        %label
-          %i.fa.fa-image
-          %input#image{name: "image", type: "file"}
-    .submit-btn Send
+    = render 'shared/form'

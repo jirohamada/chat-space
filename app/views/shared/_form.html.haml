@@ -1,8 +1,20 @@
-.form
+= form_for [@group, @message] do |f|
   .input-box
-    .input-box__text
-    .input-box__icon
-      %label
-        %i.fa.fa-image
-        %input#image{name: "image", type: "file"}
-  .submit-btn Send
+    = f.text_field :content, class: 'input-box__text', placeholder: 'type a message'
+    = f.label :image, class: 'input-box__icon' do
+      %i.fa.fa-image
+      = f.file_field :image, class: 'hidden'
+  = f.submit 'Send', class: 'submit-btn'
+
+
+
+
+
+-# .form
+-#   .input-box
+-#     .input-box__text
+-#     .input-box__icon
+-#       %label
+-#         %i.fa.fa-image
+-#         %input#image{name: "image", type: "file"}
+-#   .submit-btn Send

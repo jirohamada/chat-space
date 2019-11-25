@@ -1,8 +1,9 @@
 .header__message
   .header__message--group
     .group
-      test-group
+      = @group.name
     .member
-      membername
+      - @group.users.each do |user|
+        = user.name
   .edit-btn
-    Edit
+    = link_to "Edit", edit_group_path(params[:group_id]), method: :get

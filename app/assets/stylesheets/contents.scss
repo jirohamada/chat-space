@@ -6,6 +6,7 @@
     height: 100vh;
     display: block;
     float: left;
+    overflow: scroll;
     .group{
       color: $white;
       font-weight: bold;

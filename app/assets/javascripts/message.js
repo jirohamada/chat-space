@@ -1,7 +1,6 @@
 $(function(){
 
   function buildHTML(message){
-    // 「もしメッセージに画像が含まれていたら」という条件式
       var image = (message.image) ? `<img src="${message.image}">` : " " ;
       var html = `<div class="user1">
                     <div class="user">
@@ -37,7 +36,6 @@ $(function(){
       contentType: false
     })
     .done(function(data){
-      console.table(data)
       var html = buildHTML(data);
       $('.contents__message').append(html);
     ScrollToNewMessage();

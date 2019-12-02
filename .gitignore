@@ -6,3 +6,4 @@
 public/uploads/*
 tmp/pids/server.pid
 tmp/pids/server.pid
+/tmp/*

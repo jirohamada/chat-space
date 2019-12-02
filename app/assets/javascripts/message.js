@@ -1,0 +1,49 @@
+$(function(){
+
+  function buildHTML(message){
+      var image = (message.image) ? `<img src="${message.image}">` : " " ;
+      var html = `<div class="user1">
+                    <div class="user">
+                      <name>
+                        ${message.user_name}
+                      </name>
+                      <date>
+                        ${message.date}
+                      </date>
+                      <div class="message">
+                        <p class="message__content">
+                        ${message.content}
+                        </p>   
+                        ${image}         
+                      </div>
+                    </div>              
+                  </div>`
+    return html
+  }
+  function ScrollToNewMessage(){
+    $('.contents__message').animate({scrollTop: $('.contents__message')[0].scrollHeight}, 'fast');
+  }
+  $('#new_message').on('submit', function(e){
+    e.preventDefault();
+    var formData = new FormData(this);
+    var url = $(this).attr('action')
+    $.ajax({
+      url: url,
+      type: 'POST', 
+      data: formData,  
+      dataType: 'json',
+      processData: false,
+      contentType: false
+    })
+    .done(function(data){
+      $('#new_message')[0].reset();
+      var html = buildHTML(data);
+      $('.contents__message').append(html);
+    ScrollToNewMessage();
+      $('.submit-btn').prop('disabled', false);
+    })
+    .fail(function(){
+      alert('error');
+    })
+  })
+})

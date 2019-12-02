@@ -36,6 +36,7 @@ $(function(){
       contentType: false
     })
     .done(function(data){
+      $('#new_message')[0].reset();
       var html = buildHTML(data);
       $('.contents__message').append(html);
     ScrollToNewMessage();

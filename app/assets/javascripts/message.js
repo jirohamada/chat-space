@@ -2,13 +2,13 @@ $(function(){
 
   function buildHTML(message){
       var image = (message.image) ? `<img src="${message.image}">` : " " ;
-      var html = `<div class="user1">
+      var html = `<div class="user1", data-message-id="${message.id}">
                     <div class="user">
                       <name>
                         ${message.user_name}
                       </name>
                       <date>
-                        ${message.date}
+                        ${message.created_at}
                       </date>
                       <div class="message">
                         <p class="message__content">
@@ -36,6 +36,7 @@ $(function(){
       contentType: false
     })
     .done(function(data){
+      console.table(data)
       $('#new_message')[0].reset();
       var html = buildHTML(data);
       $('.contents__message').append(html);
@@ -44,6 +45,28 @@ $(function(){
     })
     .fail(function(){
       alert('error');
-    })
+    })  
   })
-})
+  
+  var reloadMessages = function () {
+    last_message_id = $('.user1:last').data("message-id");
+    $.ajax({
+      url: "api/messages",
+      type: 'GET',
+      dataType: 'json',
+      data: {id: last_message_id} 
+    })
+    .done(function(messages) {
+      let insertHTML = '';
+      messages.forEach(function (message) {
+        insertHTML = buildHTML(message); 
+        $('.contents__message').append(insertHTML);
+      })  
+      $('.contents__message').animate({scrollTop: $('.contents__message')[0].scrollHeight}, 'fast');
+    })
+    .fail(function() {
+      alert('自動更新に失敗しました');
+    });
+  };
+  setInterval(reloadMessages, 7000);
+});

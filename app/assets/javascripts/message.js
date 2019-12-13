@@ -47,25 +47,28 @@ $(function(){
     })  
   })
   
-  var reloadMessages = function () {
-    last_message_id = $('.user1:last').data("message-id");
-    $.ajax({
-      url: "api/messages",
-      type: 'GET',
-      dataType: 'json',
-      data: {id: last_message_id} 
-    })
-    .done(function(messages) {
-      let insertHTML = '';
-      messages.forEach(function (message) {
-        insertHTML = buildHTML(message); 
-        $('.contents__message').append(insertHTML);
-      })  
-      $('.contents__message').animate({scrollTop: $('.contents__message')[0].scrollHeight}, 'fast');
-    })
-    .fail(function() {
-      alert('自動更新に失敗しました');
-    });
-  };
+  
+    var reloadMessages = function () {
+      if (window.location.href.match(/\/groups\/\d+\/messages/)){  
+        last_message_id = $('.user1:last').data("message-id");
+        $.ajax({
+          url: "api/messages",
+          type: 'GET',
+          dataType: 'json',
+          data: {id: last_message_id} 
+        })
+        .done(function(messages) {
+          let insertHTML = '';
+          messages.forEach(function (message) {
+            insertHTML = buildHTML(message); 
+            $('.contents__message').append(insertHTML);
+          })  
+          $('.contents__message').animate({scrollTop: $('.contents__message')[0].scrollHeight}, 'fast');
+        })
+        .fail(function() {
+          alert('自動更新に失敗しました');
+        });
+      }
+    };
   setInterval(reloadMessages, 7000);
 });

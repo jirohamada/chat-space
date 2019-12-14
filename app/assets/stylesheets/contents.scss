@@ -3,7 +3,7 @@
     width: 300px;
     color: $white;
     background-color: #2f3e51;
-    height: 100vh;
+    height: calc(100vh - 100px);
     display: block;
     float: left;
     overflow: scroll;
@@ -50,7 +50,7 @@
     border-top: solid 1px #eeeeee;
     overflow: scroll;
     width: calc(100vw - 300px);
-    height: calc(100vh - 91px);
+    height: calc(100vh - 191px);
     background-color: #fafafa;
     display: block;
     float: right;
@@ -75,6 +75,7 @@
     width: calc(100vw - 300px);
     height: 90px;
     float: right;
+    position: relative;
     .new_message{
       display: flex;
       .input-box{
